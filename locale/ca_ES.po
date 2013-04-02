@@ -1,0 +1,29 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:party.party:"
+msgid "Invalid customer payment days for party \"%s\"."
+msgstr "Els dies de pagament del client \"%s\" no son correctes."
+
+msgctxt "error:party.party:"
+msgid "Invalid supplier payment days for party \"%s\"."
+msgstr "Els dies de pagament del proveïdor \"%s\" no son correctes."
+
+msgctxt "field:party.party,customer_payment_days:"
+msgid "Customer Payment Days"
+msgstr "Dies de pagament de client"
+
+msgctxt "field:party.party,supplier_payment_days:"
+msgid "Supplier Payment Days"
+msgstr "Dies de pagament de proveïdor"
+
+msgctxt "help:party.party,customer_payment_days:"
+msgid "Space separated list of payment days. A day must be between 1 and 31."
+msgstr ""
+"Dies de pagament separats amb un espai. Un dia és un valor entre 1 i 31."
+
+msgctxt "help:party.party,supplier_payment_days:"
+msgid "Space separated list of payment days. A day must be between 1 and 31."
+msgstr ""
+"Dies de pagament separats amb un espai. Un dia és un valor entre 1 i 31."
