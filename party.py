@@ -42,8 +42,8 @@ class Party(ModelSQL, ModelView):
 
         if not check(self.customer_payment_days):
             self.raise_user_error('invalid_customer_payment_days',
-                    (party.rec_name,))
+                    (self.rec_name,))
 
         if not check(self.supplier_payment_days):
             self.raise_user_error('invalid_supplier_payment_days',
-                    (party.rec_name,))
+                    (self.rec_name,))

@@ -44,7 +44,7 @@ class AccountPaymentDaysTestCase(unittest.TestCase):
         Test payment_term.
         '''
         payment_days = [5, 20]
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, CONTEXT):
             with Transaction().set_context(account_payment_days=payment_days):
                 currency, = self.currency.create([{
                             'name': 'cu1',
