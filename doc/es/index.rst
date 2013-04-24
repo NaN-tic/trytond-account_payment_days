@@ -8,24 +8,3 @@ para ser calculados en las fechas de las facturas.
 Por ejemplo, si un tercero tiene los dias de pago '5 20', la fecha de vencimiento
 pasará del día 15 al día 20 de este mes. Pero si la fecha de vencimiento es el dia
 22, este pasará a ser el día 5 del mes que viene.
-
-Módulos de los que depende
-==========================
-
-Instalados
-----------
-
-.. toctree::
-   :maxdepth: 1
-
-   /account/index
-   /account_invoice/index
-
-Dependencias
-------------
-
-* Contabilidad_
-* Facturación_
-
-.. _Contabilidad: ../account/index.html
-.. _Facturación: ../account_invoice/index.html
