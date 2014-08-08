@@ -44,8 +44,8 @@ class AccountPaymentDaysTestCase(unittest.TestCase):
         Test payment_term.
         '''
         payment_days = [5, 20]
-        with Transaction().start(DB_NAME, USER, CONTEXT):
-            with Transaction().set_context(account_payment_days=payment_days):
+        with Transaction().start(DB_NAME, USER, context=CONTEXT) as tx:
+            with tx.set_context(account_payment_days=payment_days):
                 currency, = self.currency.create([{
                             'name': 'cu1',
                             'symbol': 'cu1',
@@ -54,7 +54,7 @@ class AccountPaymentDaysTestCase(unittest.TestCase):
                 term, = self.payment_term.create([{
                             'name': '30 days, 1 month, 1 month + 15 days',
                             'lines': [
-                                ('create',[{
+                                ('create', [{
                                             'sequence': 0,
                                             'type': 'percent_on_total',
                                             'divisor': 4,
@@ -82,12 +82,12 @@ class AccountPaymentDaysTestCase(unittest.TestCase):
                                             }])
                                 ]}])
                 terms = term.compute(Decimal('1587.35'), currency,
-                        date=datetime.date(2011,10,1))
+                        date=datetime.date(2011, 10, 1))
                 self.assertEqual(terms, [
-                        (datetime.date(2011,11,05), Decimal('396.84')),
-                        (datetime.date(2011,11,05), Decimal('396.84')),
-                        (datetime.date(2011,12,05), Decimal('396.84')),
-                        (datetime.date(2012,01,20), Decimal('396.83')),
+                        (datetime.date(2011, 11, 05), Decimal('396.84')),
+                        (datetime.date(2011, 11, 05), Decimal('396.84')),
+                        (datetime.date(2011, 12, 05), Decimal('396.84')),
+                        (datetime.date(2012, 01, 20), Decimal('396.83')),
                         ])
 
 
