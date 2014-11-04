@@ -1,13 +1,6 @@
 #!/usr/bin/env python
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
-
-import sys, os
-DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
-    '..', '..', '..', '..', '..', 'trytond')))
-if os.path.isdir(DIR):
-    sys.path.insert(0, os.path.dirname(DIR))
-
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import unittest
 import datetime
 from decimal import Decimal
@@ -18,9 +11,7 @@ from trytond.transaction import Transaction
 
 
 class AccountPaymentDaysTestCase(unittest.TestCase):
-    '''
-    Test AccountPaymentDays module.
-    '''
+    'Test AccountPaymentDays module'
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('account_payment_days')
@@ -28,21 +19,15 @@ class AccountPaymentDaysTestCase(unittest.TestCase):
         self.currency = POOL.get('currency.currency')
 
     def test0005views(self):
-        '''
-        Test views.
-        '''
+        'Test views'
         test_view('account_payment_days')
 
     def test0006depends(self):
-        '''
-        Test depends.
-        '''
+        'Test depends'
         test_depends()
 
     def test0010payment_term(self):
-        '''
-        Test payment_term.
-        '''
+        'Test payment_term'
         payment_days = [5, 20]
         with Transaction().start(DB_NAME, USER, context=CONTEXT) as tx:
             with tx.set_context(account_payment_days=payment_days):
@@ -96,6 +81,3 @@ def suite():
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         AccountPaymentDaysTestCase))
     return suite
-
-if __name__ == '__main__':
-    unittest.TextTestRunner(verbosity=2).run(suite())
