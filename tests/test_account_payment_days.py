@@ -30,37 +30,6 @@ class AccountPaymentDaysTestCase(ModuleTestCase):
                             'symbol': 'cu1',
                             'code': 'cu1'
                             }])
-                #~ term, = self.payment_term.create([{
-                            #~ 'name': '30 days, 1 month, 1 month + 15 days',
-                            #~ 'lines': [
-                                #~ ('create', [{
-                                            #~ 'sequence': 0,
-                                            #~ 'type': 'percent_on_total',
-                                            #~ 'divisor': 4,
-                                            #~ 'percentage': 25,
-                                            #~ 'days': 30,
-                                            #~ }, {
-                                            #~ 'sequence': 1,
-                                            #~ 'type': 'percent_on_total',
-                                            #~ 'divisor': 4,
-                                            #~ 'percentage': 25,
-                                            #~ 'months': 1,
-                                            #~ }, {
-                                            #~ 'sequence': 2,
-                                            #~ 'type': 'fixed',
-                                            #~ 'months': 1,
-                                            #~ 'days': 30,
-                                            #~ 'amount': Decimal('396.84'),
-                                            #~ 'currency': currency.id,
-                                            #~ }, {
-                                            #~ 'sequence': 3,
-                                            #~ 'type': 'remainder',
-                                            #~ 'months': 2,
-                                            #~ 'days': 30,
-                                            #~ 'day': 15,
-                                            #~ }])
-                                #~ ]}])
-
 
                 term, = self.payment_term.create([{
                             'name': '30 days, 1 month, 1 month + 15 days',
@@ -118,10 +87,6 @@ class AccountPaymentDaysTestCase(ModuleTestCase):
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.account.tests import test_account
-    for test in test_account.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         AccountPaymentDaysTestCase))
     return suite
