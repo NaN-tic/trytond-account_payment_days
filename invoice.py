@@ -11,7 +11,7 @@ __all__ = ['Invoice']
 def process_payment_days(func):
     @wraps(func)
     def wrapper(self, *args, **kwargs):
-        if self.type in ('out_invoice', 'out_credit_note'):
+        if self.type == 'out':
             payment_days = self.party.customer_payment_days
         else:
             payment_days = self.party.supplier_payment_days
