@@ -78,7 +78,7 @@ class AccountPaymentDaysTestCase(ModuleTestCase):
                     (datetime.date(2011, 11, 5), Decimal('396.84')),
                     (datetime.date(2011, 11, 5), Decimal('396.84')),
                     (datetime.date(2011, 12, 5), Decimal('396.84')),
-                    (datetime.date(2012, 01, 20), Decimal('396.83')),
+                    (datetime.date(2012, 1, 20), Decimal('396.83')),
                     ])
 
 
