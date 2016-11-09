@@ -86,6 +86,16 @@ class AccountPaymentDaysTestCase(ModuleTestCase):
                     (datetime.date(2012, 1, 20), Decimal('396.83')),
                     ])
 
+        with Transaction().set_context(account_payment_days=[5, 31]):
+            terms = term.compute(Decimal('1587.35'), currency,
+                    date=datetime.date(2016, 2, 29))
+            self.assertEqual(terms, [
+                    (datetime.date(2016, 3, 31), Decimal('396.84')),
+                    (datetime.date(2016, 3, 31), Decimal('396.84')),
+                    (datetime.date(2016, 4, 30), Decimal('396.84')),
+                    (datetime.date(2016, 5, 31), Decimal('396.83')),
+                    ])
+
     @with_transaction()
     def test_invalid_payment_days(self):
         'Test payment_term'
