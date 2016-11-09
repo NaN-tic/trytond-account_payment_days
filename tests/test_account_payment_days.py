@@ -12,6 +12,7 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 from trytond.transaction import Transaction
+from trytond.exceptions import UserError
 
 
 class AccountPaymentDaysTestCase(ModuleTestCase):
@@ -84,6 +85,21 @@ class AccountPaymentDaysTestCase(ModuleTestCase):
                     (datetime.date(2011, 12, 5), Decimal('396.84')),
                     (datetime.date(2012, 1, 20), Decimal('396.83')),
                     ])
+
+    @with_transaction()
+    def test_invalid_payment_days(self):
+        'Test payment_term'
+        pool = Pool()
+        Party = pool.get('party.party')
+        party = Party(supplier_payment_days='a')
+        with self.assertRaises(UserError):
+            party.save()
+        party = Party(supplier_payment_days='35')
+        with self.assertRaises(UserError):
+            party.save()
+        party = Party(customer_payment_days='35')
+        with self.assertRaises(UserError):
+            party.save()
 
 
 def suite():
