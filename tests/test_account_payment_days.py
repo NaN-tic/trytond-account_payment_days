@@ -4,9 +4,13 @@
 from decimal import Decimal
 import datetime
 import unittest
+import doctest
+
 import trytond.tests.test_tryton
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.tests.test_tryton import doctest_teardown
+from trytond.tests.test_tryton import doctest_checker
 from trytond.transaction import Transaction
 
 
@@ -86,4 +90,9 @@ def suite():
     suite = trytond.tests.test_tryton.suite()
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         AccountPaymentDaysTestCase))
+    suite.addTests(doctest.DocFileSuite(
+            'scenario_invoice.rst',
+            tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite
