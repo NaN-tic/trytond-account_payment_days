@@ -1,8 +1,8 @@
 #This file is part account_payment_days module for Tryton.
-#The COPYRIGHT file at the top level of this repository contains 
+#The COPYRIGHT file at the top level of this repository contains
 #the full copyright notices and license terms.
 from dateutil.relativedelta import relativedelta
-from trytond.model import ModelView, ModelSQL
+from trytond.pool import PoolMeta
 from trytond.transaction import Transaction
 
 __all__ = ['PaymentTermLine']
@@ -12,8 +12,9 @@ def days_in_month(date):
     return (date + relativedelta(day=31)).day
 
 
-class PaymentTermLine(ModelSQL, ModelView):
+class PaymentTermLine:
     __name__ = 'account.invoice.payment_term.line'
+    __metaclass__ = PoolMeta
 
     def get_date(self, date):
         '''
