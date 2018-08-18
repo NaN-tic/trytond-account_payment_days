@@ -12,9 +12,8 @@ def days_in_month(date):
     return (date + relativedelta(day=31)).day
 
 
-class PaymentTermLine:
+class PaymentTermLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.payment_term.line'
-    __metaclass__ = PoolMeta
 
     def get_date(self, date):
         '''

@@ -7,9 +7,8 @@ from trytond.transaction import Transaction
 __all__ = ['Invoice']
 
 
-class Invoice:
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
-    __metaclass__ = PoolMeta
 
     def get_move(self):
         if self.type == 'out':
