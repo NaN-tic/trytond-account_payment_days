@@ -3,6 +3,8 @@
 # the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import PoolMeta
+from trytond.i18n import gettext
+from trytond.exceptions import UserError
 
 __all__ = ['Party']
 
@@ -14,15 +16,6 @@ class Party(metaclass=PoolMeta):
     supplier_payment_days = fields.Char('Supplier Payment Days', help='Space '
             'separated list of payment days. A day must be between 1 and 31.')
 
-    @classmethod
-    def __setup__(cls):
-        super(Party, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_customer_payment_days': ('Invalid customer payment '
-                        'days for party "%s".'),
-                'invalid_supplier_payment_days': ('Invalid supplier payment '
-                        'days for party "%s".'),
-                })
 
     @classmethod
     def validate(cls, parties):
@@ -43,9 +36,11 @@ class Party(metaclass=PoolMeta):
             return True
 
         if not check(self.customer_payment_days):
-            self.raise_user_error('invalid_customer_payment_days',
-                    (self.rec_name,))
+            raise UserError(gettext(
+                'account_payment_days.invalid_customer_payment_days',
+                    party=self.rec_name))
 
         if not check(self.supplier_payment_days):
-            self.raise_user_error('invalid_supplier_payment_days',
-                    (self.rec_name,))
+            raise UserError(gettext(
+                'account_payment_days.invalid_supplier_payment_days',
+                party=self.rec_name))
