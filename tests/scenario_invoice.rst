@@ -130,3 +130,15 @@ Create in invoice and check payment days::
     >>> invoice.click('post')
     >>> sorted([l.maturity_date.day for l in invoice.lines_to_pay])
     [1, 16]
+
+Check search on invoice payment_days field:
+
+    >>> from trytond import backend
+    >>> if backend.name() == 'postgresql':
+    ...     invoices5 = Invoice.find([('payment_days', '=', 5)])
+    ...     invoices25 = Invoice.find([('payment_days', '=', 25)])
+    ...     invoices525 = Invoice.find([('payment_days', 'in', [5, 25])])
+    ...     len(invoices5), len(invoices25), len(invoices525)
+    ... else:
+    ...     1, 1, 2
+    (1, 1, 2)
