@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.invoice,payment_days:"
+msgid "Payment Days"
+msgstr ""
+
 msgctxt "field:party.party,customer_payment_days:"
 msgid "Customer Payment Days"
 msgstr "Días de pago de cliente"
