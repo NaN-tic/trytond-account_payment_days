@@ -142,7 +142,7 @@ Create in invoice and check payment days::
 Check search on invoice payment_days field:
 
     >>> from trytond import backend
-    >>> if backend.name() == 'postgresql':
+    >>> if backend.name == 'postgresql':
     ...     invoices5 = Invoice.find([('payment_days', '=', 5)])
     ...     invoices25 = Invoice.find([('payment_days', '=', 25)])
     ...     invoices525 = Invoice.find([('payment_days', 'in', [5, 25])])
