@@ -36,7 +36,7 @@ class Invoice(metaclass=PoolMeta):
     def search_payment_days(cls, name, clause):
         Party = Pool().get('party.party')
 
-        if backend.name() == 'sqlite':
+        if backend.name == 'sqlite':
             # Sqlite does not support UNNEST function
             return ['OR', [
                     ('type', '=', 'out'),
