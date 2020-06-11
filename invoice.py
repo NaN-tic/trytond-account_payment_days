@@ -51,7 +51,7 @@ class Invoice(metaclass=PoolMeta):
 
         customer_days = party.select(party.id,
             Unnest(RegExpSplitToArray(party.customer_payment_days,
-                    '\s+')).as_('day'))
+                    r'\s+')).as_('day'))
         customer_days = customer_days.select(customer_days.id,
             where=(Operator(Cast(NullIf(customer_days.day, ''), 'int'),
                     value)))
