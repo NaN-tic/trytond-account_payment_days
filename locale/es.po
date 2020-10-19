@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice,payment_days:"
 msgid "Payment Days"
-msgstr ""
+msgstr "Días de pago"
 
 msgctxt "field:party.party,customer_payment_days:"
 msgid "Customer Payment Days"
@@ -16,20 +16,16 @@ msgstr "Días de pago de proveedor"
 
 msgctxt "help:party.party,customer_payment_days:"
 msgid "Space separated list of payment days. A day must be between 1 and 31."
-msgstr ""
-"Días de pago separados por un espacio. Un día es un valor entre 1 y 31."
+msgstr "Días de pago separados por un espacio. Un día es un valor entre 1 y 31."
 
 msgctxt "help:party.party,supplier_payment_days:"
 msgid "Space separated list of payment days. A day must be between 1 and 31."
-msgstr ""
-"Días de pago separados por un espacio. Un día es un valor entre 1 y 31."
+msgstr "Días de pago separados por un espacio. Un día es un valor entre 1 y 31."
 
 msgctxt "model:ir.message,text:invalid_customer_payment_days"
 msgid "Invalid customer payment days for party \"%(party)s\"."
-msgstr ""
-"Los días de pado del cliente no son válidos para el tercero \"%(party)s\"."
+msgstr "Los días de pado del cliente no son válidos para el tercero \"%(party)s\"."
 
 msgctxt "model:ir.message,text:invalid_supplier_payment_days"
 msgid "Invalid supplier payment days for party \"%(party)s\"."
-msgstr ""
-"Los días de pado del cliente no son válidos para el tercero \"%(party)s\"."
+msgstr "Los días de pado del cliente no son válidos para el tercero \"%(party)s\"."
