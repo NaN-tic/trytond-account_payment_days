@@ -93,6 +93,7 @@ Create out invoice and check payment days::
     >>> invoice.party = party
     >>> invoice.invoice_date = period.start_date
     >>> invoice.payment_term = payment_term
+    >>> invoice.payment_term_date = today
     >>> line = invoice.lines.new()
     >>> line.product = product
     >>> line.quantity = 5
@@ -104,13 +105,15 @@ Create out invoice and check payment days::
     >>> invoice.party = party_without_days
     >>> invoice.invoice_date = period.start_date
     >>> invoice.payment_term = payment_term
+    >>> invoice.payment_term_date = today
     >>> line = invoice.lines.new()
     >>> line.product = product
     >>> line.quantity = 5
     >>> line.unit_price = Decimal('40')
     >>> invoice.click('post')
-    >>> sorted([l.maturity_date.day for l in invoice.lines_to_pay])
-    [1, 16]
+    >>> sorted([l.maturity_date.day for l in invoice.lines_to_pay]) == sorted(
+    ...     [(today + relativedelta(days=15)).day, today.day])
+    True
 
 Create in invoice and check payment days::
 
@@ -119,6 +122,7 @@ Create in invoice and check payment days::
     >>> invoice.party = party
     >>> invoice.invoice_date = period.start_date
     >>> invoice.payment_term = payment_term
+    >>> invoice.payment_term_date = today
     >>> line = invoice.lines.new()
     >>> line.product = product
     >>> line.quantity = 5
@@ -131,13 +135,15 @@ Create in invoice and check payment days::
     >>> invoice.party = party_without_days
     >>> invoice.invoice_date = period.start_date
     >>> invoice.payment_term = payment_term
+    >>> invoice.payment_term_date = today
     >>> line = invoice.lines.new()
     >>> line.product = product
     >>> line.quantity = 5
     >>> line.unit_price = Decimal('40')
     >>> invoice.click('post')
-    >>> sorted([l.maturity_date.day for l in invoice.lines_to_pay])
-    [1, 16]
+    >>> sorted([l.maturity_date.day for l in invoice.lines_to_pay]) == sorted(
+    ...     [(today + relativedelta(days=15)).day, today.day])
+    True
 
 Check search on invoice payment_days field:
 
