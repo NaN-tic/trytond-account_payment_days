@@ -15,7 +15,12 @@ Imports::
     ...     create_chart, get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
-    >>> today = datetime.date.today()
+
+Set today at the beginning of month (to ensure maturity dates match the test)
+and in the following month (because maturity dates in the past raise a
+warning)::
+
+    >>> today = datetime.date.today() + relativedelta(day=5, months=1)
 
 Install account_payment_days::
 
