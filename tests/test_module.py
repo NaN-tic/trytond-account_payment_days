@@ -1,22 +1,19 @@
-# This file is part of the account_payment_days module for Tryton.
-# The COPYRIGHT file at the top level of this repository contains the full
-# copyright notices and license terms.
+
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+
 from decimal import Decimal
 import datetime
-import unittest
-import doctest
 
-import trytond.tests.test_tryton
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import doctest_teardown
-from trytond.tests.test_tryton import doctest_checker
 from trytond.transaction import Transaction
 from trytond.exceptions import UserError
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class AccountPaymentDaysTestCase(ModuleTestCase):
-    'Test Account Payment Days module'
+class AccountPaymentDaysTestCase(CompanyTestMixin, ModuleTestCase):
+    'Test AccountPaymentDays module'
     module = 'account_payment_days'
 
     @with_transaction()
@@ -112,13 +109,4 @@ class AccountPaymentDaysTestCase(ModuleTestCase):
             party.save()
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        AccountPaymentDaysTestCase))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_invoice.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    return suite
+del ModuleTestCase
