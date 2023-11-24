@@ -9,7 +9,6 @@ from trytond.transaction import Transaction
 from trytond.model import fields
 from trytond import backend
 
-__all__ = ['Invoice']
 
 class RegExpSplitToArray(Function):
     __slots__ = ()
@@ -48,6 +47,10 @@ class Invoice(metaclass=PoolMeta):
         party = Party.__table__()
         _, operator, value = clause
         Operator = fields.SQL_OPERATORS[operator]
+
+        if not operator in ('=', '!=') or not isinstance(value, int):
+            # In case the search is incorrect, do not return results
+            return [('id', '=', -1)]
 
         customer_days = party.select(party.id,
             Unnest(RegExpSplitToArray(party.customer_payment_days,
