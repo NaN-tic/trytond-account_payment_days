@@ -37,10 +37,10 @@ class Party(metaclass=PoolMeta):
 
         if not check(self.customer_payment_days):
             raise UserError(gettext(
-                'account_payment_days.invalid_customer_payment_days',
-                    party=self.rec_name))
+                'account_payment_days.msg_invalid_customer_payment_days',
+                    days=self.customer_payment_days, party=self.rec_name))
 
         if not check(self.supplier_payment_days):
             raise UserError(gettext(
-                'account_payment_days.invalid_supplier_payment_days',
-                party=self.rec_name))
+                'account_payment_days.msg_invalid_supplier_payment_days',
+                days=self.supplier_payment_days, party=self.rec_name))
