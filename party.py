@@ -12,9 +12,9 @@ __all__ = ['Party']
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
     customer_payment_days = fields.Char('Customer Payment Days', help='Space '
-            'separated list of payment days. A day must be between 1 and 31.')
+        'separated list of payment days. A day must be between 1 and 31.')
     supplier_payment_days = fields.Char('Supplier Payment Days', help='Space '
-            'separated list of payment days. A day must be between 1 and 31.')
+        'separated list of payment days. A day must be between 1 and 31.')
 
 
     @classmethod

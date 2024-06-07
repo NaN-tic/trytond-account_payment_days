@@ -24,12 +24,14 @@ msgid "Space separated list of payment days. A day must be between 1 and 31."
 msgstr ""
 "Días de pago separados por un espacio. Un día es un valor entre 1 y 31."
 
-msgctxt "model:ir.message,text:invalid_customer_payment_days"
-msgid "Invalid customer payment days for party \"%(party)s\"."
-msgstr ""
-"Los días de pago del cliente no son válidos para el tercero \"%(party)s\"."
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_customer_payment_days"
+msgid "Invalid customer payment days \"%(days)s\" for party \"%(party)s\"."
+msgstr "Días de pago del cliente \"%(days)s\" no válidos para la parte \"%(party)s\"."
 
-msgctxt "model:ir.message,text:invalid_supplier_payment_days"
-msgid "Invalid supplier payment days for party \"%(party)s\"."
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_supplier_payment_days"
+msgid "Invalid supplier payment days \"%(days)s\" for party \"%(party)s\"."
 msgstr ""
-"Los días de pago del cliente no son válidos para el tercero \"%(party)s\"."
+"Días de pago de proveedores \"%(days)s\" no válidos para la parte "
+"\"%(party)s\"."

@@ -2,9 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:account.invoice,payment_days:"
 msgid "Payment Days"
-msgstr ""
+msgstr "Dies de pagament"
 
 msgctxt "field:party.party,customer_payment_days:"
 msgid "Customer Payment Days"
@@ -24,12 +25,16 @@ msgid "Space separated list of payment days. A day must be between 1 and 31."
 msgstr ""
 "Dies de pagament separats amb un espai. Un dia és un valor entre 1 i 31."
 
-msgctxt "model:ir.message,text:invalid_customer_payment_days"
-msgid "Invalid customer payment days for party \"%(party)s\"."
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_customer_payment_days"
+msgid "Invalid customer payment days \"%(days)s\" for party \"%(party)s\"."
 msgstr ""
-"Els dies de pagament del client no són vàlids per al tercer \"%(party)s\"."
+"Els dies de pagament del client \"%(days)s\" no són vàlids per al grup "
+"\"%(party)s\"."
 
-msgctxt "model:ir.message,text:invalid_supplier_payment_days"
-msgid "Invalid supplier payment days for party \"%(party)s\"."
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_supplier_payment_days"
+msgid "Invalid supplier payment days \"%(days)s\" for party \"%(party)s\"."
 msgstr ""
-"Els dies de pagament del client no són vàlids per al tercer \"% (party) s\"."
+"Dies de pagament del proveïdor \"%(days)s\" no vàlids per a la part "
+"\"%(party)s\"."
