@@ -31,5 +31,5 @@ msgstr "Días de pago del cliente \"%(days)s\" no válidos para la parte \"%(par
 msgctxt "model:ir.message,text:msg_invalid_supplier_payment_days"
 msgid "Invalid supplier payment days \"%(days)s\" for party \"%(party)s\"."
 msgstr ""
-"Días de pago de proveedores \"%(days)s\" no válidos para la parte "
+"Días de pago de proveedores \"%(days)s\" no válidos para el tercero "
 "\"%(party)s\"."
