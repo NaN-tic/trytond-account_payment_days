@@ -2,7 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:account.invoice,payment_days:"
 msgid "Payment Days"
 msgstr "Dies de pagament"

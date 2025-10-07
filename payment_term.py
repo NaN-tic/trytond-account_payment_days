@@ -15,8 +15,10 @@ def days_in_month(date):
 class PaymentTermLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.payment_term.line'
 
-    def next_payment_day(self, date):
-        payment_days = Transaction().context.get('account_payment_days')
+    @classmethod
+    def next_payment_day(cls, date, payment_days=None):
+        if payment_days is None:
+            payment_days = Transaction().context.get('account_payment_days')
         if payment_days:
             assert isinstance(payment_days, list)
             payment_days = sorted(payment_days)
