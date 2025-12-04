@@ -4,9 +4,7 @@
 from trytond.model import fields
 from trytond.pool import PoolMeta
 from trytond.i18n import gettext
-from trytond.exceptions import UserError
-
-__all__ = ['Party']
+from trytond.model.exceptions import ValidationError
 
 
 class Party(metaclass=PoolMeta):
@@ -36,11 +34,11 @@ class Party(metaclass=PoolMeta):
             return True
 
         if not check(self.customer_payment_days):
-            raise UserError(gettext(
+            raise ValidationError(gettext(
                 'account_payment_days.msg_invalid_customer_payment_days',
                     days=self.customer_payment_days, party=self.rec_name))
 
         if not check(self.supplier_payment_days):
-            raise UserError(gettext(
+            raise ValidationError(gettext(
                 'account_payment_days.msg_invalid_supplier_payment_days',
                 days=self.supplier_payment_days, party=self.rec_name))
