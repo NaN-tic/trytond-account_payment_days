@@ -93,7 +93,7 @@ class Test(unittest.TestCase):
 
         # Create out invoice and check payment days
         Invoice = Model.get('account.invoice')
-        invoice = Invoice()
+        invoice = Invoice(type='out')
         invoice.party = party
         invoice.invoice_date = period.start_date
         invoice.payment_term = payment_term
@@ -106,7 +106,7 @@ class Test(unittest.TestCase):
         self.assertEqual(
             sorted([l.maturity_date.day for l in invoice.lines_to_pay]),
             [5, 20])
-        invoice = Invoice()
+        invoice = Invoice(type='out')
         invoice.party = party_without_days
         invoice.invoice_date = period.start_date
         invoice.payment_term = payment_term
