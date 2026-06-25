@@ -39,11 +39,44 @@ class PaymentTermLine(metaclass=PoolMeta):
         'account_payment_days' key in context which may contain a list
         of payment days.
         '''
-        date = super(PaymentTermLine, self).get_date(date)
-        date = self.next_payment_day(date)
-        if Transaction().context.get('account_payment_holidays'):
-            working_date = self.next_working_day(date)
-            while date != working_date:
-                date = self.next_payment_day(working_date)
-                working_date = self.next_working_day(date)
-        return date
+        transaction = Transaction()
+        base_date = date
+        for relativedelta_ in self.relativedeltas:
+            base_date += relativedelta_.get()
+
+        nominal_date = self.next_payment_day(base_date)
+        final_date = nominal_date
+        if (transaction.context.get('account_payment_holidays')
+                and hasattr(self, 'next_working_day')):
+            working_date = self.next_working_day(final_date)
+            while final_date != working_date:
+                final_date = self.next_payment_day(working_date)
+                working_date = self.next_working_day(final_date)
+
+        state_key = (
+            self.payment.id if self.payment else None,
+            date,
+            tuple(transaction.context.get('account_payment_days') or ()),
+            tuple(transaction.context.get('account_payment_holidays') or ()),
+            )
+        state = getattr(transaction, '_account_payment_days_state', None)
+        if (state
+                and state.get('key') == state_key
+                and state['base_date'] < base_date
+                and state['nominal_date'] < state['final_date']
+                and final_date <= state['final_date']):
+            final_date = self.next_payment_day(
+                state['final_date'] + relativedelta(days=1))
+            if (transaction.context.get('account_payment_holidays')
+                    and hasattr(self, 'next_working_day')):
+                working_date = self.next_working_day(final_date)
+                while final_date != working_date:
+                    final_date = self.next_payment_day(working_date)
+                    working_date = self.next_working_day(final_date)
+        transaction._account_payment_days_state = {
+            'key': state_key,
+            'base_date': base_date,
+            'nominal_date': nominal_date,
+            'final_date': final_date,
+            }
+        return final_date
