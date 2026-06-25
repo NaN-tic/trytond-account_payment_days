@@ -62,7 +62,7 @@ class Test(unittest.TestCase):
 
         Invoice = Model.get('account.invoice')
         InvoiceLine = Model.get('account.invoice.line')
-        invoice = Invoice()
+        invoice = Invoice(type='out')
         invoice.party = party
         invoice.payment_term = payment_term
         invoice.payment_term_date = datetime.date(2026, 6, 15)
