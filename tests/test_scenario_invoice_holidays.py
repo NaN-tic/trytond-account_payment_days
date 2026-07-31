@@ -2,6 +2,7 @@ import datetime
 import unittest
 from decimal import Decimal
 
+from dateutil.relativedelta import relativedelta
 from proteus import Model
 from trytond.modules.account.tests.tools import (
     create_chart, create_fiscalyear, get_accounts)
@@ -23,7 +24,8 @@ class Test(unittest.TestCase):
         super().tearDown()
 
     def test(self):
-        today = datetime.date(2026, 1, 1)
+        today = datetime.date.today()
+        holiday_date = today + relativedelta(months=1, day=1)
         activate_modules(['account_payment_days', 'account_payment_holidays'])
 
         _ = create_company()
@@ -43,9 +45,9 @@ class Test(unittest.TestCase):
         party = Party(name='Party')
         party.customer_payment_days = '30'
         party.payment_holidays.append(PaymentHolidays(
-                from_month='08',
+                from_month=f'{holiday_date.month:02}',
                 from_day=1,
-                thru_month='08',
+                thru_month=f'{holiday_date.month:02}',
                 thru_day=31,
                 ))
         party.save()
@@ -65,8 +67,8 @@ class Test(unittest.TestCase):
         invoice = Invoice(type='out')
         invoice.party = party
         invoice.payment_term = payment_term
-        invoice.payment_term_date = datetime.date(2026, 6, 15)
-        invoice.invoice_date = datetime.date(2026, 6, 15)
+        invoice.payment_term_date = today.replace(day=1)
+        invoice.invoice_date = today
         line = InvoiceLine()
         invoice.lines.append(line)
         line.account = revenue
@@ -81,8 +83,9 @@ class Test(unittest.TestCase):
             line.maturity_date
             for line in invoice.move.lines
             if line.account == receivable)
+        maturity_date = holiday_date + relativedelta(months=1, day=30)
         self.assertEqual(maturity_dates, [
-                datetime.date(2026, 7, 30),
-                datetime.date(2026, 9, 30),
-                datetime.date(2026, 10, 30),
+                maturity_date,
+                maturity_date + relativedelta(months=1, day=30),
+                maturity_date + relativedelta(months=2, day=30),
                 ])
