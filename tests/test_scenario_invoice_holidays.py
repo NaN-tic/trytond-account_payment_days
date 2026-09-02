@@ -54,9 +54,9 @@ class Test(unittest.TestCase):
 
         PaymentTerm = Model.get('account.invoice.payment_term')
         payment_term = PaymentTerm(name='Three Months')
-        line = payment_term.lines.new(type='percent', ratio=Decimal('0.3333333333'))
+        line = payment_term.lines.new(type='percent', ratio=Decimal('0.33333333'))
         line.relativedeltas.new(months=1)
-        line = payment_term.lines.new(type='percent', ratio=Decimal('0.3333333333'))
+        line = payment_term.lines.new(type='percent', ratio=Decimal('0.33333333'))
         line.relativedeltas.new(months=2)
         line = payment_term.lines.new(type='remainder')
         line.relativedeltas.new(months=3)
