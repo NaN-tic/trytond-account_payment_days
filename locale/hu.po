@@ -1,0 +1,44 @@
+#
+msgid ""
+msgstr ""
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "field:account.invoice,payment_days:"
+msgid "Payment Days"
+msgstr "Fizetési napok"
+
+msgctxt "field:party.party,customer_payment_days:"
+msgid "Customer Payment Days"
+msgstr "Vevő fizetési napjai"
+
+msgctxt "field:party.party,supplier_payment_days:"
+msgid "Supplier Payment Days"
+msgstr "Szállító fizetési napjai"
+
+msgctxt "help:party.party,customer_payment_days:"
+msgid "Space separated list of payment days. A day must be between 1 and 31."
+msgstr ""
+"Fizetési napok szóközzel elválasztott listája. Egy nap értéke 1 és 31 "
+"közötti lehet."
+
+msgctxt "help:party.party,supplier_payment_days:"
+msgid "Space separated list of payment days. A day must be between 1 and 31."
+msgstr ""
+"Fizetési napok szóközzel elválasztott listája. Egy nap értéke 1 és 31 "
+"közötti lehet."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_customer_payment_days"
+msgid "Invalid customer payment days \"%(days)s\" for party \"%(party)s\"."
+msgstr ""
+"A(z) „%(party)s” partner „%(days)s” vevői fizetési napjai érvénytelenek."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_supplier_payment_days"
+msgid "Invalid supplier payment days \"%(days)s\" for party \"%(party)s\"."
+msgstr ""
+"A(z) „%(party)s” partner „%(days)s” szállítói fizetési napjai érvénytelenek."
