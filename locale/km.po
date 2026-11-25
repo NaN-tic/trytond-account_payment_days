@@ -1,0 +1,39 @@
+#
+msgid ""
+msgstr ""
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "field:account.invoice,payment_days:"
+msgid "Payment Days"
+msgstr "ចំនួនថ្ងៃសម្រាប់ទូទាត់"
+
+msgctxt "field:party.party,customer_payment_days:"
+msgid "Customer Payment Days"
+msgstr "ថ្ងៃទូទាត់របស់អតិថិជន"
+
+msgctxt "field:party.party,supplier_payment_days:"
+msgid "Supplier Payment Days"
+msgstr "ថ្ងៃទូទាត់របស់អ្នកផ្គត់ផ្គង់"
+
+msgctxt "help:party.party,customer_payment_days:"
+msgid "Space separated list of payment days. A day must be between 1 and 31."
+msgstr "បញ្ជីថ្ងៃទូទាត់បំបែកដោយដកឃ្លា។ ថ្ងៃត្រូវមានតម្លៃចន្លោះពី 1 ដល់ 31។"
+
+msgctxt "help:party.party,supplier_payment_days:"
+msgid "Space separated list of payment days. A day must be between 1 and 31."
+msgstr "បញ្ជីថ្ងៃទូទាត់បំបែកដោយដកឃ្លា។ ថ្ងៃត្រូវមានតម្លៃចន្លោះពី 1 ដល់ 31។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_customer_payment_days"
+msgid "Invalid customer payment days \"%(days)s\" for party \"%(party)s\"."
+msgstr "ថ្ងៃទូទាត់របស់អតិថិជន «%(days)s» មិនត្រឹមត្រូវសម្រាប់ភាគី «%(party)s»។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_supplier_payment_days"
+msgid "Invalid supplier payment days \"%(days)s\" for party \"%(party)s\"."
+msgstr ""
+"ថ្ងៃទូទាត់របស់អ្នកផ្គត់ផ្គង់ «%(days)s» មិនត្រឹមត្រូវសម្រាប់ភាគី «%(party)s»។"
